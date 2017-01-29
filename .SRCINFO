@@ -1,0 +1,16 @@
+pkgbase = r8723bs-git
+	pkgdesc = Realtek R8723BS WIFI driver for RTL8723BS working on baytrail tablets - alternate to 8723bs
+	pkgver = b3def82d8cbd0e7011bfaa6b70cd74725863e833
+	pkgrel = 1
+	url = http://www.realtek.com.tw/
+	install = r8723bs-git.install
+	arch = any
+	license = GPL
+	provides = r8723bs
+	source = r8723bs::git+https://github.com/hadess/rtl8723bs
+	source = blacklist-8723bs.conf
+	sha256sums = SKIP
+	sha256sums = 52582494094670fd8c2aed16f4c8e2589889054810a0c5cf67bf2abe6473f7ea
+
+pkgname = r8723bs-git
+

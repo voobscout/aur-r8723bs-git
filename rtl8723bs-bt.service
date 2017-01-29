@@ -1,0 +1,10 @@
+[Unit]
+Description=Realtek 8723bs Bluetooth start assistant
+Documentation=https://github.com/lwfinger/rtl8723bs_bt
+
+[Service]
+ExecStart=/usr/bin/rtk_hciattach -n -s 115200 /dev/ttyS1 rtk_h5
+ExecStop=/bin/true
+
+[Install]
+WantedBy=default.target

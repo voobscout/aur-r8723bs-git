@@ -1,0 +1,10 @@
+[Unit]
+Description=Realtek 8723bs Bluetooth start assistant - power-on
+Documentation=https://github.com/lwfinger/rtl8723bs_bt
+
+[Service]
+ExecStart=/usr/bin/bash -c "echo -n 'power on\n' | /usr/bin/bluetoothctl"
+ExecStop=/bin/true
+
+[Install]
+WantedBy=default.target
