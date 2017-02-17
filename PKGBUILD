@@ -22,13 +22,15 @@ source=("${_wifidriver}::git+https://github.com/hadess/rtl8723bs"
         '99-rtl8723bs-bt.rules'
         '99-disable-sap.conf'
         'rtl8723bs-bt.service'
-        'rtl8723bs-bt-power-on.service')
+        'rtl8723bs-bt-power-on.service'
+        '10-mac-randomization.conf')
 sha256sums=('SKIP'
             'SKIP'
             'dc6de087ee0e34cc71651f3d7202d08784f5f70adba812697f02d8f3376590ad'
             '760becdd20e4790ff93c34d59e5fcc473dc47ccea1eb8aa17e1070bac69ca506'
             '1eb279fc0923d5efb3d3046cb528faf46f1b927d9912c754a830938e0b89ddbc'
-            '8b72ff56ee187aa08401d0a381696207f40d9d305a2e4a5abfd18f37af2ee401')
+            '8b72ff56ee187aa08401d0a381696207f40d9d305a2e4a5abfd18f37af2ee401'
+            'SKIP')
 
 _build_wifi() {
 	cd "${srcdir}/${_wifidriver}/"
