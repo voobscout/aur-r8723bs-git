@@ -1,5 +1,6 @@
 # Maintainer: VoobScout <voobscout+arch@gmail.com>
-# Axdia international GmbH wintab 9 plus 3G/Tablet, BIOS 5.6.5 03/10/2015
+# This package requires a patched kernel
+# TODO: if networkmanager package found, update it's config to not change MAC address during scan ops.
 
 pkgname=rtl8723bs-wifi-bt-git
 _wifidriver=r8723bs_wifi
@@ -12,9 +13,9 @@ provides=('rtl8723bs-wifi-bt')
 arch=('any')
 license=('GPL')
 install=rtl8723bs-wifi-bt-git.install
-#builddepends=('linux-zen-baytab-headers')
+#builddepends=('linux-zen-ct-headers')
 builddepends=('linux-headers')
-#depends=('linux-zen-baytab')
+#depends=('linux-zen-ct')
 
 source=("${_wifidriver}::git+https://github.com/hadess/rtl8723bs"
         "${_btdriver}::git+https://github.com/lwfinger/rtl8723bs_bt.git"
@@ -75,6 +76,8 @@ _pkg_config() {
   mkdir -p "${pkgdir}/usr/lib/systemd/system/"
   install -p -m 644 rtl8723bs-bt.service "${pkgdir}/usr/lib/systemd/system/"
   install -p -m 644 rtl8723bs-bt-power-on.service "${pkgdir}/usr/lib/systemd/system/"
+  mkdir -p "${pkgdir}/etc/NetworkManager/conf.d"
+  install -p -m 644 10-mac-randomization.conf "${pkgdir}/etc/NetworkManager/conf.d/"
 }
 
 package() {
