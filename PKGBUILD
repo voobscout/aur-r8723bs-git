@@ -54,8 +54,8 @@ _pkg_wifi() {
 	mkdir -p "${pkgdir}/usr/lib/modules/${_kver}/kernel/drivers/net/wireless"
 	mkdir -p "${pkgdir}/usr/lib/firmware/rtlwifi/"
 	install -p -m 644 r8723bs.ko "${pkgdir}/usr/lib/modules/${_kver}/kernel/drivers/net/wireless/"
-	install -p -m 644 rtl8723bs_nic.bin "${pkgdir}/usr/lib/firmware/rtlwifi/"
-	install -p -m 644 rtl8723bs_wowlan.bin "${pkgdir}/usr/lib/firmware/rtlwifi/"
+	# install -p -m 644 rtl8723bs_nic.bin "${pkgdir}/usr/lib/firmware/rtlwifi/"
+	# install -p -m 644 rtl8723bs_wowlan.bin "${pkgdir}/usr/lib/firmware/rtlwifi/"
 }
 
 _pkg_bt() {
