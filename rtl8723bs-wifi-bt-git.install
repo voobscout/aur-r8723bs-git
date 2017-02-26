@@ -7,6 +7,9 @@ pre_install() {
 	find /lib/modules/$(uname -r) -name r8723bs*ko* -exec rm -f {} \;
   rm -rf /lib/firmware/rtl_bt
   rm -rf /usr/bin/rtk_hciattach
+  # Trash buggy firmware that comes with linux-firmware nowadays
+  rm -rf /usr/lib/firmware/rtlwifi/rtl8723bs_nic.bin
+  rm -rf /usr/lib/firmware/rtlwifi/rtl8723bs_wowlan.bin
 }
 
 post_install() {

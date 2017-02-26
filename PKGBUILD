@@ -6,7 +6,7 @@ pkgname=rtl8723bs-wifi-bt-git
 _wifidriver=r8723bs_wifi
 _btdriver=r8723bs_bt
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Realtek R8723BS WIFI & BT"
 url="http://www.realtek.com.tw/"
 provides=('rtl8723bs-wifi-bt')
@@ -54,8 +54,8 @@ _pkg_wifi() {
 	mkdir -p "${pkgdir}/usr/lib/modules/${_kver}/kernel/drivers/net/wireless"
 	mkdir -p "${pkgdir}/usr/lib/firmware/rtlwifi/"
 	install -p -m 644 r8723bs.ko "${pkgdir}/usr/lib/modules/${_kver}/kernel/drivers/net/wireless/"
-	# install -p -m 644 rtl8723bs_nic.bin "${pkgdir}/usr/lib/firmware/rtlwifi/"
-	# install -p -m 644 rtl8723bs_wowlan.bin "${pkgdir}/usr/lib/firmware/rtlwifi/"
+	install -p -m 644 rtl8723bs_nic.bin "${pkgdir}/usr/lib/firmware/rtlwifi/"
+	install -p -m 644 rtl8723bs_wowlan.bin "${pkgdir}/usr/lib/firmware/rtlwifi/"
 }
 
 _pkg_bt() {
