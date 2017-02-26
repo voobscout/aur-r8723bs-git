@@ -5,8 +5,8 @@
 pkgname=rtl8723bs-wifi-bt-git
 _wifidriver=r8723bs_wifi
 _btdriver=r8723bs_bt
-pkgver=0.5
-pkgrel=2
+pkgver=0.1
+pkgrel=1
 pkgdesc="Realtek R8723BS WIFI & BT"
 url="http://www.realtek.com.tw/"
 provides=('rtl8723bs-wifi-bt')
@@ -17,7 +17,8 @@ install=rtl8723bs-wifi-bt-git.install
 builddepends=('linux-headers')
 #depends=('linux-zen-ct')
 
-source=("${_wifidriver}::git+https://github.com/hadess/rtl8723bs"
+source=("${_wifidriver}::git+https://github.com/muhviehstah/rtl8723bs"
+        # "${_wifidriver}::git+https://github.com/hadess/rtl8723bs"
         "${_btdriver}::git+https://github.com/lwfinger/rtl8723bs_bt.git"
         '99-rtl8723bs-bt.rules'
         '99-disable-sap.conf'
@@ -53,17 +54,19 @@ _pkg_wifi() {
 	_kver=$(uname -r)
 	mkdir -p "${pkgdir}/usr/lib/modules/${_kver}/kernel/drivers/net/wireless"
 	mkdir -p "${pkgdir}/usr/lib/firmware/rtlwifi/"
-	install -p -m 644 r8723bs.ko "${pkgdir}/usr/lib/modules/${_kver}/kernel/drivers/net/wireless/"
-	install -p -m 644 rtl8723bs_nic.bin "${pkgdir}/usr/lib/firmware/rtlwifi/"
-	install -p -m 644 rtl8723bs_wowlan.bin "${pkgdir}/usr/lib/firmware/rtlwifi/"
+	install -p -m 644 8723bs.ko "${pkgdir}/usr/lib/modules/${_kver}/kernel/drivers/net/wireless/"
+  # install -p -m 644 r8723bs.ko "${pkgdir}/usr/lib/modules/${_kver}/kernel/drivers/net/wireless/"
+
+	# install -p -m 644 rtl8723bs_nic.bin "${pkgdir}/usr/lib/firmware/rtlwifi/"
+	# install -p -m 644 rtl8723bs_wowlan.bin "${pkgdir}/usr/lib/firmware/rtlwifi/"
 }
 
 _pkg_bt() {
   cd "${srcdir}/${_btdriver}/"
   mkdir -p "${pkgdir}/usr/lib/firmware/rtl_bt"
   install -p -m 644 rtlbt_config "${pkgdir}/usr/lib/firmware/rtl_bt/"
-  install -p -m 644 rtlbt_fw "${pkgdir}/usr/lib/firmware/rtl_bt/"
   install -p -m 644 rtlbt_fw_new "${pkgdir}/usr/lib/firmware/rtl_bt/"
+  install -p -m 644 rtlbt_fw "${pkgdir}/usr/lib/firmware/rtl_bt/"
 
   mkdir -p "${pkgdir}/usr/bin"
   install -p -m 755 rtk_hciattach "${pkgdir}/usr/bin/"
