@@ -1,6 +1,7 @@
 # -*- mode: shell-script -*-
 
 pre_install() {
+    echo -e "dont forget to update initrd if needed\n"
 	  # unload old module version
 	  # rmmod r8723bs
 	  # trash old module versions
